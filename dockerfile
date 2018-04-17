@@ -10,7 +10,12 @@ RUN apt-get install azure-functions-core-tools -y
 
 RUN apt-get install nginx -y
 COPY ./etc/nginx/sites-available/default /etc/nginx/sites-available/
+COPY ./var/www/html/** /var/www/html/
+COPY ./var/www/html/themes/** /var/www/html/themes/
+
+COPY readme.md /var/www/html/
 RUN rm /etc/nginx/sites-enabled/default
 RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 EXPOSE 80
-CMD ["service", "nginx", "start"]
+
+CMD ["nginx", "-g", "daemon off;"]
