@@ -25,3 +25,9 @@
     ```bash
     docker run -it -p 7071:80 <YOUR_IMAGE>:<YOUR_TAG>
     ```
+
+4. Execute function
+
+    ```bash
+    curl http://localhost:7071/api/<MY_GET_FUNCTION>
+    ```
