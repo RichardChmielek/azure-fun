@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html>
-    <title>azure-func</title>
+<html lang="en">
+    <head>
+    <title>readme.md</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <style rel="stylesheet">code.error {line-height:2rem;font-size:2rem;color:#F43;padding:2rem;display: block;}</style>
+    <script>
+        const FILENAME = document.title;
+        const set = (t) => document.getElementById('content').innerHTML = t;
+        const pull = fetch(FILENAME, {headers: {'Accept': 'text/markdown'}})
+          .then((res) => {
+            if (!res.ok)
+              throw new Error('${res.statusText} (${res.status})');
+            return res.text()
+          })
+      </script>
+      <script defer>
+        pull.then((text) => set(marked(text)))
+          .catch((err) => set('<code class="error">Failed to load ${FILENAME}: ${err.message}</code>'))
+      </script>
+    </head>
     <body>
-        <xmp theme="united" style="display:none;" id="placeholder">
+        <xmp theme="united" style="display:none;" id="content">
 
         </xmp>
+        <footer class="footer-distributed">
+                <div class="footer-right">
+                    <a href="https://twitter.com/RichardChmielek"><i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/RichardChmielek"><i class="fa fa-github"></i></a>
+                </div>
+                <div class="footer-left">
+                    <p>&copy; 2018</p>
+                </div>
+            </footer>
         <script src="strapdown.js"></script>
     </body>
 </html>
