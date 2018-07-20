@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.0-runtime
+FROM microsoft/dotnet:2.1.2-runtime
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install curl gnupg gnupg2 apt-transport-https -y
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
